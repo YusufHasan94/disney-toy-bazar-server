@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "name": "John Foster",
+      "customer_review": "I absolutely loved this product! It exceeded my expectations.",
+      "rating": 5,
+      "img": "https://img.freepik.com/free-photo/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction_176420-15187.jpg?w=1380&t=st=1684438018~exp=1684438618~hmac=71dd21e3a7fe081378ab299216df920671ba5d8b64eeb298ee712395ab7dd7e5"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "customer_review": "Great service and top-notch quality. Highly recommended.",
+      "rating": 4,
+      "img": "https://img.freepik.com/free-photo/close-up-portrait-young-bearded-man-white-shirt-jacket-posing-camera-with-broad-smile-isolated-gray_171337-629.jpg?w=1380&t=st=1684438050~exp=1684438650~hmac=cda4948fcf4b5b945ac54c541b1edab422f4a3a6957bf2b08d050a84082abd88"
+    },
+    {
+      "id": 3,
+      "name": "Mike Johnson",
+      "customer_review": "Average product. It met my needs but nothing extraordinary.",
+      "rating": 3,
+      "img": "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=1380&t=st=1684438100~exp=1684438700~hmac=aef7eb34eb6fe7c3d8437dc9ed9accf3197278e36fb36134df18677ee1da9ae5"
+    }
+  ]
