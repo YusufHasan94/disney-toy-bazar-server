@@ -13,6 +13,9 @@ app.use(express.json());
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.kaasp8g.mongodb.net/?retryWrites=true&w=majority`;
 
+//using offline uri
+// const uri = "mongodb://localhost:27017"
+
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
@@ -31,9 +34,16 @@ async function run() {
     const images = database.collection("images");
     const reviews = database.collection("reviews");
     const sponsors = database.collection("sponsors");
+    const category = database.collection("category");
 
     app.get('/images',async(req, res)=>{
         const cursor = images.find();
+        const result = await cursor.toArray();
+        res.send(result);
+    })
+
+    app.get('/categories', async(req, res)=>{
+        const cursor = category.find();
         const result = await cursor.toArray();
         res.send(result);
     })
@@ -60,17 +70,8 @@ async function run() {
 }
 run().catch(console.dir);
 
-
-
-
-const categories = require('./data/categories.json');
-
 app.get('/', (req, res)=>{
     res.send("Hello Disney Toy server");
-})
-
-app.get('/categories',(req, res)=>{
-    res.send(categories);
 })
 
 app.listen(port, ()=>{
