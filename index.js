@@ -53,8 +53,8 @@ async function run() {
     
     //set route to get specific subcategory
     app.get('/categories/:id', async(req, res)=>{
-        const id = req.params.id;
-        const query = {_id: new ObjectId(id)};
+        const id = req.params.id; 
+        const query = {_id : new ObjectId(id)};
         const result = await category.findOne(query);
         res.send(result);
     })
@@ -82,8 +82,8 @@ async function run() {
 
     //set route to get data for all toys 
     app.get('/toys', async(req, res)=>{
-        const cursor = toysCollection.find();
-        const result = await cursor.toArray();
+        const limit = parseInt(req.query.limit);
+        const result = await toysCollection.find().limit(limit).toArray();
         res.send(result);
     })
 
@@ -113,11 +113,29 @@ async function run() {
         const result = await toysCollection.findOne(query);
         res.send(result);
     })
-    //delete selected toys
+    
+    //delete selected toy
     app.delete('/my-toys/:id', async(req, res)=>{
         const id = req.params.id;
         const query = {_id: new ObjectId(id)};
         const result = await toysCollection.deleteOne(query);
+        res.send(result);
+    })
+
+    //update selected toy
+    app.patch('/my-toys/:id', async(req, res)=>{
+        const id = req.params.id;
+        const filter = {_id: new ObjectId(id)};
+        const updateToy = req.body;
+        console.log(updateToy.Price);
+        const updateDoc = {
+            $set:{
+                Price: updateToy.Price,
+                availableQuantity: updateToy.availableQuantity,
+                detailsDescription: updateToy.detailsDescription
+            }
+        };
+        const result = await toysCollection.updateOne(filter, updateDoc);
         res.send(result);
     })
 
